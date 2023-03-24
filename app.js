@@ -2,6 +2,10 @@ import {
     Ball
 } from "./ball.js";
 
+import {
+    Block
+} from "./block.js";
+
 class App {
     constructor() {
         this.canvas = document.createElement('canvas');
@@ -13,6 +17,7 @@ class App {
         window.requestAnimationFrame(this.animate.bind(this));
 
         this.ball = new Ball(this.stageWidth, this.stageHeight, 60, 15);
+        this.block = new Block(450, 30, 300, 450);
     }
 
     resize() {
@@ -28,7 +33,8 @@ class App {
     animate(t) {
         window.requestAnimationFrame(this.animate.bind(this));
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight); // 이전에 그렸던 것을 지워주고
-        this.ball.draw(this.ctx, this.stageWidth, this.stageHeight); // 다시 그려줌
+        this.ball.draw(this.ctx, this.stageWidth, this.stageHeight, this.block); // 다시 그려줌
+        this.block.draw(this.ctx);
     }
 }
 
